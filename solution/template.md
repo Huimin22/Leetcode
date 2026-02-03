@@ -28,3 +28,5 @@ code
 ## 6. Edge Cases
 
 ## 7. Follow-ups
+
+## 8. Note
