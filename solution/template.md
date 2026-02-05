@@ -1,7 +1,7 @@
 ## 1. Problem
 
     
-## 2. Idea
+## 2. Sum
 
 
 
