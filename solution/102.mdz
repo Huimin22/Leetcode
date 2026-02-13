@@ -1,0 +1,77 @@
+## 1. Problem
+
+    
+## 2. Summary
+
+```python
+# LC 102 - Level Order Traversal (BFS version)
+from collections import deque
+def levelOrder(root):
+    if not root: return []
+    res, q = [], deque([root])
+    while q:
+        level = []
+        for _ in range(len(q)):
+            node = q.popleft()
+            level.append(node.val)
+            if node.left: q.append(node.left)
+            if node.right: q.append(node.right)
+        res.append(level)
+    return res
+```
+
+
+
+## 3. Key Points
+
+* BFS: queue stores nodes per layer; for loop handles current layer; append children to queue; collect values per layer.
+* 
+* DFS: pass `level` in recursion; `res[level]` stores values; create new list if `len(res) < level+1`; recurse left/right with `level+1`.
+
+## 4. Code Implementation:
+
+```
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    from collections import deque
+
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if not root:
+            return []
+
+        res = []
+        q = deque([root])
+
+        while q:
+            level = []
+            for _ in range(len(q)):
+                node = q.popleft()
+                level.append(node.val)
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+            res.append(level)
+        return res   
+```
+
+## 5. Complexity Analysis
+    Time：O(n)
+        
+    Space: O(1)
+        
+## 6. Edge Cases
+
+## 7. Follow-ups
+
+## 8. Note
+
+* Confused queue role: stores existing nodes, not new values.
+* Misunderstood DFS `level` tracking: must pass level in recursion.
+* Didn’t grasp `if len(res) < level + 1: res.append([])`: ensures current layer list exists.
+
