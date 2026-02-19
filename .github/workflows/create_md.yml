@@ -1,0 +1,38 @@
+name: Create LeetCode MD
+
+on:
+  workflow_dispatch:
+    inputs:
+      number:
+        description: 'Problem Number'
+        required: true
+        default: '100'
+
+jobs:
+  create_md:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Generate MD file
+        run: |
+          FILE="solution/${{ github.event.inputs.number }}.md"
+          if [ -f "$FILE" ]; then
+            echo "$FILE exist"
+            exit 1
+          fi
+        
+          TODAY=$(date '+%Y-%m-%d')
+          sed "s/{{NUMBER}}/${{ github.event.inputs.number }}/g; s/{{DATE}}/$TODAY/g" template.md > "$FILE"
+
+      - name: Commit and push
+        run: |
+          git add "solution/${{ github.event.inputs.number }}.md"
+          git commit -m "Create problem ${{ github.event.inputs.number }} MD"
+          git push
