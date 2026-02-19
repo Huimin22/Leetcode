@@ -6,7 +6,7 @@ on:
       number:
         description: 'Problem Number'
         required: true
-        default: '100'
+        default: '10000'
 
 jobs:
   create_md:
