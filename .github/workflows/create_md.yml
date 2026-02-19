@@ -28,9 +28,8 @@ jobs:
             exit 1
           fi
         
-          TODAY=$(date '+%Y-%m-%d')
-          sed "s/{{NUMBER}}/${{ github.event.inputs.number }}/g; s/{{DATE}}/$TODAY/g" template.md > "$FILE"
-
+          cp template.md "$FILE"
+          
       - name: Commit and push
         run: |
           git add "solution/${{ github.event.inputs.number }}.md"
