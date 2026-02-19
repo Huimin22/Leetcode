@@ -28,7 +28,7 @@ jobs:
             exit 1
           fi
         
-          cp template.md "$FILE"
+          cp solution/template.md "$FILE"
           
       - name: Commit and push
         run: |
