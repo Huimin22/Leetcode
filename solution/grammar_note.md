@@ -33,3 +33,23 @@ class A:
 In your example, `helper` is a function defined inside the method, not a class method, so no `self` is needed.
 
 If `helper` were defined as a **class method**, you would need `self.helper(...)`.
+
+
+#### About defaultdict
+
+```python
+from collections import defaultdict
+
+# defaultdict auto-creates empty list for new keys
+graph = defaultdict(list)
+
+graph[0].append(1)  # 0 → 1
+graph[0].append(2)  # 0 → 2
+
+print(graph)         # {0: [1, 2]}
+print(graph[1])      # []  auto-created empty list
+```
+
+* Key = node
+* Value = list of neighbors
+* Missing key → auto empty list
