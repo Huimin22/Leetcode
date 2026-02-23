@@ -53,3 +53,7 @@ print(graph[1])      # []  auto-created empty list
 * Key = node
 * Value = list of neighbors
 * Missing key → auto empty list
+
+defaultdict(int)  → missing key becomes 0
+defaultdict(list) → missing key becomes []
+defaultdict(set)  → missing key becomes set()
