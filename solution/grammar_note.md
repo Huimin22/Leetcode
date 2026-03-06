@@ -1,3 +1,55 @@
+#### About zip(s, t)
+### 1️⃣ `zip(s, t)`
+
+* `zip()` is a Python built-in function.
+* It pairs elements from two iterables (`s` and `t`) by position.
+* Returns an iterator of tuples `(s_char, t_char)`.
+
+**Example:**
+
+```python
+s = "egg"
+t = "add"
+list(zip(s, t))  # [('e', 'a'), ('g', 'd'), ('g', 'd')]
+```
+
+* First iteration: `('e', 'a')`
+* Second iteration: `('g', 'd')`
+* Third iteration: `('g', 'd')`
+
+---
+
+### 2️⃣ `for cs, ct in zip(s, t)`
+
+* Uses **tuple unpacking**.
+* Each iteration assigns:
+
+  * `cs` = current character from `s`
+  * `ct` = current character from `t`
+
+```python
+for cs, ct in zip(s, t):
+    print(cs, ct)
+```
+
+**Output:**
+
+```
+e a
+g d
+g d
+```
+
+---
+
+### 3️⃣ Why use `zip`
+
+* Traverse two strings simultaneously.
+* Guarantees `cs` and `ct` are at the same position.
+* Suitable for checking one-to-one mapping.
+
+---
+
 #### About call self.function
 
 `self` is **required when a class method needs to access its own attributes or call other methods**.
@@ -57,3 +109,10 @@ print(graph[1])      # []  auto-created empty list
 defaultdict(int)  → missing key becomes 0
 defaultdict(list) → missing key becomes []
 defaultdict(set)  → missing key becomes set()
+
+
+
+**Summary:**
+
+* `zip(s, t)` → pairs elements by position.
+* `for cs, ct in zip(s, t)` → get corresponding characters each iteration for mapping checks.
