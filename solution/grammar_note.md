@@ -87,6 +87,29 @@ In your example, `helper` is a function defined inside the method, not a class m
 If `helper` were defined as a **class method**, you would need `self.helper(...)`.
 
 
+
+## Understanding
+
+* **Class methods are not global functions**
+  If you write `invertTree(...)` inside a method, Python will first look in the **local scope**, then in the **global scope**.
+  Since the function is defined inside the class, it is **not in local or global scope** → results in an error.
+
+* **Adding `self.` changes this**
+
+  * `self` points to the **current object**
+  * The current object is an instance of `Solution()`, which **owns the `invertTree` method**
+  * Writing `self.invertTree(...)` tells Python to look in the **object’s method list** → found → call succeeds
+
+* **Purpose of recursive call**
+
+  * Each recursion uses the **same object `self`** to call its method
+  * Since the object already has the `invertTree` method, recursion works correctly
+
+💡 **Analogy**:
+
+* **Without `self`** → “I want a function called `invertTree`” → not found in local/global → error
+* **With `self`** → “I want to use the `invertTree` method the object already has” → found → call succeeds
+
 #### About defaultdict
 
 ```python
