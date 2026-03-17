@@ -1,4 +1,71 @@
+### Container vs Syntax 
+
+1. **Container vs Syntax**
+
+   | Symbol | Container Type | Example / Purpose                                      |
+   | ------ | -------------- | ------------------------------------------------------ |
+   | `[]`   | list           | `[key, value]` stores elements                         |
+   | `()`   | tuple          | `(a, b)` is a tuple, also used in **unpacking syntax** |
+
+2. **Unpacking Rules**
+
+   * **Single-layer unpacking** (element itself is list/tuple):
+
+     ```python
+     bucket = [[1,10],[2,20]]
+     for k, v in bucket:  # No parentheses needed
+         print(k, v)
+     ```
+
+     ✅ Output:
+
+     ```
+     1 10
+     2 20
+     ```
+
+   * **Multi-layer unpacking** (enumerate + inner list/tuple):
+
+     ```python
+     bucket = [[1,10],[2,20]]
+     for i, (k, v) in enumerate(bucket):  # Parentheses match inner structure
+         print(i, k, v)
+     ```
+
+     ✅ Output:
+
+     ```
+     0 1 10
+     1 2 20
+     ```
+
+     * Parentheses tell Python: “element is a container, unpack its two elements”
+     * Writing `for i, k, v in enumerate(bucket)` would raise an error, because `enumerate` returns `(i, element)` → two items only.
+
+---
+
+#### Quick Memory Trick
+
+* **Phrase**:
+
+> **“Outer enumerate uses parentheses, inner container can be any type; parentheses for unpacking, square brackets for storing.”**
+
+* **Visualized**:
+
+```python
+enumerate(bucket) → (index, element)
+element = [key, value]  # list or tuple
+for i, (k, v) in enumerate(bucket)
+```
+
+* **Simplified cheat**:
+
+  * `[ ]` → storage
+  * `( )` → unpacking
+
+
 #### About zip(s, t)
+
 ### 1️⃣ `zip(s, t)`
 
 * `zip()` is a Python built-in function.
