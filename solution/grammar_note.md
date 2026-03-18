@@ -1,4 +1,75 @@
-### Container vs Syntax 
+## About Dictionary Traversal Default
+
+### 1️⃣ Dictionary / Set Comprehension
+
+**Syntax template**:
+
+```python
+# dict
+{key_expr: value_expr for var in iterable if condition}
+
+# set
+{expr for var in iterable if condition}
+
+# list
+[expr for var in iterable if condition]
+```
+
+**Principles**:
+
+* Left side → what you generate (key/value or element)
+* Right side → iteration path
+* Multi-level for → outer loop first, inner loop after
+* Optional `if` for filtering
+
+**Example**:
+
+```python
+# Initialize graph with each letter as key and empty set as value
+graph = {c: set() for word in words for c in word}
+
+# Equivalent expanded version:
+graph = {}
+for word in words:
+    for c in word:
+        if c not in graph:
+            graph[c] = set()
+```
+
+---
+
+### 2️⃣ Dictionary Traversal Default Behavior
+
+```python
+d = {'a': 1, 'b': 2, 'c': 3}
+
+for x in d:           # iterates over keys
+for x in d.keys():    # also keys
+for v in d.values():  # iterates over values
+for k, v in d.items():# iterates over key/value pairs
+```
+
+* Example in context:
+
+```python
+indegree = {c: 0 for c in graph}  # traverses keys by default, value = 0
+```
+
+
+### 3️⃣ `set()` vs `list()`
+
+* `set()` → automatic deduplication, O(1) membership check
+* `list()` → allows duplicates, preserves order
+* Use `set()` in `graph[c]` to avoid duplicate edges:
+
+```python
+graph[c] = set()
+if neighbor not in graph[c]:
+    graph[c].add(neighbor)
+```
+
+
+## Container vs Syntax 
 
 1. **Container vs Syntax**
 
@@ -64,7 +135,7 @@ for i, (k, v) in enumerate(bucket)
   * `( )` → unpacking
 
 
-#### About zip(s, t)
+## About zip(s, t)
 
 ### 1️⃣ `zip(s, t)`
 
@@ -117,7 +188,7 @@ g d
 
 ---
 
-#### About call self.function
+## About call self.function
 
 `self` is **required when a class method needs to access its own attributes or call other methods**.
 
@@ -177,7 +248,7 @@ If `helper` were defined as a **class method**, you would need `self.helper(...)
 * **Without `self`** → “I want a function called `invertTree`” → not found in local/global → error
 * **With `self`** → “I want to use the `invertTree` method the object already has” → found → call succeeds
 
-#### About defaultdict
+## About defaultdict
 
 ```python
 from collections import defaultdict
