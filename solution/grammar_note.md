@@ -1,3 +1,9 @@
+## About Division
+
+* `a / b` → floating-point division
+* `a // b` → floor division (toward -∞)
+* `int(a / b)` → truncate toward zero (closer to 0)
+
 ## About Dictionary Traversal Default
 
 ### 1️⃣ Dictionary / Set Comprehension
