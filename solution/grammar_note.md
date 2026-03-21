@@ -1,3 +1,39 @@
+
+## About Dict setdefault
+
+```python
+parent.setdefault(x, x)
+```
+
+### 1️⃣ `parent`
+
+* This is a Python **dictionary**.
+* Keys are nodes, values are their “parent” in the union-find structure.
+
+### 2️⃣ `.setdefault(key, default)`
+
+* This is a dictionary method in Python.
+
+* **Behavior:**
+
+  ```python
+  dict.setdefault(key, default)
+  ```
+
+  * If `key` exists in the dictionary, return `dict[key]` (does nothing).
+  * If `key` does **not** exist, set `dict[key] = default` and return `default`.
+
+* **Equivalent long form:**
+
+  ```python
+  if key not in dict:
+      dict[key] = default
+  return dict[key]
+  ```
+
+
+
+
 ## About Division
 
 * `a / b` → floating-point division
