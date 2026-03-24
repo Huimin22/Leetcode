@@ -1,3 +1,17 @@
+## About DFS Metaphor
+
+### Key Points
+
+* **DFS** = Explore every possible path in a tree/maze
+* **Intermediate state** = Current exploration position, decides which branch to take next
+* **Pruning** = Encounter a dead end, backtrack, and skip impossible paths
+* **Leaf node** = Reach the end, collect the result
+* **Backtracking** = After finishing one path, return to try other paths
+
+### One-line metaphor
+
+**DFS = Maze exploration / decision-tree traversal: intermediate states are just exploration, prune dead ends, collect results at the exit, then backtrack to try other paths.**
+
 
 ## About Dict setdefault
 
